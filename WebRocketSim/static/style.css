@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* 指定宽度和高度（最小/最大属性）确定元素边框 */
+  box-sizing: boxder-box;
+  background: rgba(51, 51, 51, 1);
+}
+
+body {
+  min-height: 100vh;
+}
+
+/* 视窗宽度，1vw=视窗宽度的1% */
+/* 视窗高度，1vh=视窗高度的1% */
+.flex-container {
+  /* 定义为弹性容器 */
+  display: flex;
+  /* 纵向排列 */
+  flex-direction: column;
+  /* 弹性项目平均分布在该行上，两边留有一半的间隔空间。 */
+  justify-content: space-around;
+  /* 弹性盒子元素在该行的侧轴（纵轴）上居中放置。 */
+  align-items: center;
+  text-align: center;
+
+  /* 定位 */
+  position: absolute;
+  /* right: 18px; */
+  /* bottom: 15px; */
+  right: 1.5vw;
+  bottom: 2.4vh;
+
+  width: auto;
+  height: auto;
+
+  margin: auto;
+  padding: auto;
+  border: 0px;
+
+  border: 1px solid #ccc;
+}
+
+.flex-item {
+  /* float: right; */
+  display: inline-block;
+  width: auto;
+  height: auto;
+  margin: auto;
+}
+
+font {
+  color: white;
+  font-size: 14px;
+  margin: 7.4px 5px;
+  padding: 7px 0px;
+  display: inline-block;
+}
+
+input {
+  color: white;
+  margin: 7.4px 5px;
+  padding: 7px 0px;
+
+  display: inline-block;
+  /* 文本居中对齐 */
+  text-align: center;
+  font-size: 14px;
+  font-family: "Microsoft soft";
+
+  /* 取消外边框 */
+  outline-style: none;
+  /* 实线边框 */
+  border: 1px solid #ccc;
+  /* 圆角效果 */
+  border-radius: 3px;
+  width: 50px;
+}
+/* 设置输入框点击发光效果 */
+input:focus {
+  border-color: #3e6381;
+  /* 元素周围的轮廓 */
+  outline: 0;
+  /* 向元素添加阴影 */
+  /* inset将外部阴影(outset)改为内部阴影 */
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+#calculate {
+  color: white;
+
+  border: none;
+  padding: 2.4vh 1.2vw;
+  margin: 1vh 0.6vw;
+
+  /* font-size: 2vmin; */
+  font-size: 15px;
+  text-align: center;
+
+  /*没有文本装饰*/
+  text-decoration: none;
+  font-family: "Microsoft soft";
+
+  /* 设置圆角按钮 */
+  border-radius: 12px;
+
+  display: inline-block;
+
+  /* 定义了鼠标指针放在一个元素边界范围内时所用的光标形状 */
+  cursor: pointer;
+  /* 设置 "hover" 效果的速度 */
+  transition-duration: 0.1s;
+  background-color: #555555;
+}
+/* 鼠标悬停按钮 */
+#button:hover {
+  background-color: #2e2d2d;
+}
+
+.scene {
+  position: absolute;
+  /* widows: 110%; */
+  height: 100%;
+  width: 60%;
+  top: 0;
+  left: 40%;
+  background: rgba(51, 51, 51, 1);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scene i {
+  position: absolute;
+  top: -150px;
+  background: rgba(255, 255, 255, 0.5);
+  animation: animateStars linear infinite;
+}
+@keyframes animateStars {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.scene .rocket {
+  position: absolute;
+  /* 让鼠标事件失效（链接、点击等事件） */
+  pointer-events: none;
+  animation: animate 0.2s ease infinite;
+}
+@keyframes animate {
+  0%,
+  100% {
+    /* transform: translateY(-52px) translateX(-50%) ; */
+  }
+  50% {
+    /* transform: translateY(-48px) translateX(-50%) ; */
+  }
+}
+
+.scene .rocket::before {
+  content: "";
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 200px;
+  background: linear-gradient(#00d0ff, transparent);
+}
+
+.scene .rocket::after {
+  content: "";
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 200px;
+  background: linear-gradient(#00d0ff, transparent);
+  filter: blur(20px);
+}

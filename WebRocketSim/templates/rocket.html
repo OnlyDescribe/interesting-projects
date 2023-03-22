@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- initial-scale：初始的缩放比例(默认设置为1.0) minimum-scale  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 ,user-scalable=no" />
+  <title>Rocket Index</title>
+  <link rel="shortcut icon" href="../static/favicon.ico">
+  <script src="https://cdn.bootcdn.net/ajax/libs/echarts/4.8.0/echarts.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/underscore.js/1.10.2/underscore-min.js"></script>
+  <link rel="stylesheet" type="text/css" href="..\static\style.css" />
+  <script>
+    // 自适应分辨率字体大小
+    // 获取屏幕宽度和高度并计算比例
+    function fontSize(res) {
+      // let docEl = document.documentElement,
+      // innerWidth对于Internet Explorer、Chrome、Firefox、Opera 以及 Safari：
+      // 后者对应Internet Explorer 8、7、6、5取浏览器窗口内部宽度
+      clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+      clientHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+      if ((!clientWidth) || (!clientHeight)) return;
+      let fontSize = Math.min(100 * (clientWidth / 1920), 100 * (clientHeight / 1080));
+      return res * fontSize;
+    }</script>
+</head>
+
+<body>
+  <!-- 为ECharts准备Dom -->
+  <div id="axies1" style="position:absolute; width: 41%; height: 33.33%; top:0;"></div>
+  <div id="axies2" style="position:absolute; width: 41%; height: 33.34%; top:33.33%;"></div>
+  <div id="axies3" style="position:absolute; width: 41%; height: 33.33%; bottom:0;"></div>
+  <script type="text/javascript" src="../static/chart.js"></script><br>
+
+  <!-- 火箭和星星背景 -->
+  <div class="scene">
+    <div class="rocket">
+      <img src="..\static\rocket.png" />
+    </div>
+  </div>
+
+  <script>
+    function mouseMove(e) {
+      var rocket = document.querySelector('.rocket');
+      rocket.style.left = e.offsetX - 33 + 'px';
+      rocket.style.top = e.offsetY - 43 + 'px';
+    };
+    $("div.scene").hover(function () {
+      document.addEventListener("mousemove", mouseMove)
+    });
+    $("div.scene").mouseleave(function () {
+      document.removeEventListener("mousemove", mouseMove)
+    });
+
+    function stars() {
+      var count = 50;
+      let scene = document.querySelector(".scene");
+      let i = 0;
+      while (i < count) {
+        let star = document.createElement("i");
+        let x = Math.floor(Math.random() * window.innerWidth);
+
+        let duration = Math.random() * 1;
+        let h = Math.random() * 100;
+
+        star.style.left = x + "px";
+        star.style.width = 1 + "px";
+        star.style.height = 50 + h + "px";
+        star.style.animationDuration = duration + "s";
+        scene.appendChild(star);
+        i++;
+      }
+    }
+    stars();
+  </script>
+
+  <!-- 输入火箭运行参数 -->
+  <div class="flex-container">
+    <span class="flex-item">
+      <font>飞行时间:</font><input class="put" type="text" placeholder="飞行时间" id='time' value="3000" />
+    </span>
+    <span class="flex-item">
+      <font>采样数据:</font><input class="put" type="text" placeholder="采样数据" id='N' value="10000" />
+    </span>
+    <span class="flex-item">
+      <font>火箭质量:</font><input class="put" type="text" placeholder="火箭质量" id='M' value="1000" />
+    </span>
+    <span class="flex-item">
+      <font>时间倍率:</font><input class="put" type="text" placeholder="时间倍率" id='speed' value="200" />
+    </span>
+    <span class="flex-item">
+      <button id='calculate'>计算火箭轨迹</button>
+    </span>
+  </div>
+
+</body>
+</html>
