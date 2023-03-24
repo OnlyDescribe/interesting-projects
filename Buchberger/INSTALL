@@ -1,0 +1,17 @@
+SY2109149 张恺健
+
+==========================================================
+1、请确保系统中有cmake或xmake构件工具, 推荐使用xmake进行编译。
+2、暂且仅支持Linux系统。
+3、编译前确保系统中安装了flint2, ntl以及gmp包。
+4、依赖库为CAS Singular,
+1）(默认)将Singular库clone到本文件目录中./Singular, 通过xmake自动编译依赖库.
+2）可按照以下教程进行安装到本地环境中, 并相应修改xmake.lua, 增加链接库环境设置.
+<https://github.com/Singular/Singular/wiki/Step-by-Step-Installation-Instructions-for-Singular>
+
+==========================================================
+0. 根据需要修改xmake.lua的设置
+
+1. 'xmake f -m release'和'xmake -v'进行编译链接
+2. 'xmake r' 运行代码
+3. (可选) `xmake f -m debug`, 切换编译模式为 `debug`, 相当于"-DDEBUG".

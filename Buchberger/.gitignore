@@ -1,0 +1,6 @@
+.xmake
+.cache
+.vscode
+test
+build
+Singular

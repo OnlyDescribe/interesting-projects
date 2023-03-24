@@ -1,0 +1,11 @@
+CompileFlags: # Tweak the parse settings
+  Add: 
+    - "-DHAVE_IOSTREAM"
+    - "-DHAVE_RINGS"
+    - "-DKINLINE"
+    - "-UNOSTREAMIO"
+    - "--include-directory=include/singular"
+    - "--include-directory=include"
+    - "--include-directory=Singular/**"
+    # - "-std=c++17" 
+    - "-std=c++11"

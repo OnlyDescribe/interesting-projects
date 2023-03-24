@@ -1,0 +1,3 @@
+[submodule "Buchberger/Singular"]
+	path = Buchberger/Singular
+	url = https://github.com/Singular/Singular.git
